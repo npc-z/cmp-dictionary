@@ -1,11 +1,8 @@
-# WARNING
-
-**This is no longer maintained.**
-**I will archive it in due course.**
-
 # cmp-dictionary
 
 A dictionary completion source for [nvim-cmp](https://github.com/hrsh7th/nvim-cmp).
+
+And added 8k+ common words by default.
 
 This plugin provides one of the easiest way to add desired completion candidates to nvim-cmp.
 
