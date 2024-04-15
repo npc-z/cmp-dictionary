@@ -46,6 +46,23 @@ end
 
 function source:_update()
   local opts = config.options
+
+  -- 获取当前文件的绝对路径
+  -- 当在 config.lua 文件中时，下面这条语句的执行结果: ~/.config/nvim/init.lua
+  local current_file = vim.fn.expand("<sfile>")
+
+  -- 在 Vim 脚本中，:p 和 :h 是文件名修改器，用于修改文件名的格式。
+  -- :p 表示将路径转换为绝对路径。
+  -- :h 表示取文件路径的上级目录。
+
+  local _data_path =
+    vim.fn.expand(vim.fn.fnamemodify(vim.fn.fnamemodify(current_file, ":p:h"), ":h:h") .. "/data")
+  -- 使用 lua 语言特性，将路径拓展成绝对路径
+  local data_path = vim.fn.expand(_data_path)
+  local default_words = data_path .. "/words"
+
+  table.insert(opts.paths, 1, default_words)
+
   self.dict:update(opts.paths)
 end
 
